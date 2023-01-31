@@ -1,4 +1,4 @@
-package com.microserivce.eurekaserver.orderservice.model;
+package com.microservice.orderservice.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

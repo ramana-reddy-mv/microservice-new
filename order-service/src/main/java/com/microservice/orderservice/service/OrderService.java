@@ -1,11 +1,12 @@
-package com.microserivce.eurekaserver.orderservice.service;
+package com.microservice.orderservice.service;
 
-import com.microserivce.eurekaserver.orderservice.dto.InventoryResponse;
-import com.microserivce.eurekaserver.orderservice.dto.OrderLineItemsDto;
-import com.microserivce.eurekaserver.orderservice.dto.OrderRequest;
-import com.microserivce.eurekaserver.orderservice.model.Order;
-import com.microserivce.eurekaserver.orderservice.model.OrderLineItems;
-import com.microserivce.eurekaserver.orderservice.repository.OrderRepository;
+import com.microserivce.orderservice.dto.InventoryResponse;
+import com.microserivce.orderservice.dto.OrderLineItemsDto;
+
+import com.microservice.orderservice.dto.OrderRequest;
+import com.microservice.orderservice.model.Order;
+import com.microservice.orderservice.model.OrderLineItems;
+import com.microservice.orderservice.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -21,7 +22,7 @@ public class OrderService {
     private OrderRepository orderRepository;
 
     @Autowired
-    public WebClient webClient;
+    public WebClient.Builder webClientBuilder;
 
     public void placeOrder(OrderRequest orderRequest){
         Order order = new Order();
@@ -38,8 +39,8 @@ public class OrderService {
                 .toList();
 
         //call inventory service and place order if product is in stock
-        InventoryResponse[] inventoryResponsesArray  = webClient.get()
-                .uri("http://localhost:8082/api/inventory",
+        InventoryResponse[] inventoryResponsesArray  = webClientBuilder.build().get()
+                .uri("http://inventory-service/api/inventory",
                         uriBuilder -> uriBuilder.queryParam("skuCode",skuCodes).build())
                 .retrieve()
                 .bodyToMono(InventoryResponse[].class)

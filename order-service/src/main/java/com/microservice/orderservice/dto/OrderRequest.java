@@ -1,5 +1,6 @@
-package com.microserivce.eurekaserver.orderservice.dto;
+package com.microservice.orderservice.dto;
 
+import com.microserivce.orderservice.dto.OrderLineItemsDto;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 

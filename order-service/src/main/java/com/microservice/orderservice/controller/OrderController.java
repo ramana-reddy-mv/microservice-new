@@ -1,7 +1,8 @@
-package com.microserivce.eurekaserver.orderservice.controller;
+package com.microservice.orderservice.controller;
 
-import com.microserivce.eurekaserver.orderservice.dto.OrderRequest;
-import com.microserivce.eurekaserver.orderservice.service.OrderService;
+
+import com.microservice.orderservice.dto.OrderRequest;
+import com.microservice.orderservice.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

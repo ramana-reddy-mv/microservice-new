@@ -1,4 +1,4 @@
-package com.microserivce.eurekaserver.orderservice.dto;
+package com.microserivce.orderservice.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
